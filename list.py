@@ -1,13 +1,21 @@
 lists = [] 
 
-#讀取檔案
-with open('lists.csv','r') as f:
-	for line in f:  #line 為 excel 內的每一行
-		if '商品,價格'in line:
-			continue
-		name, price = line.strip().split(',')
-		lists.append([name, price])
-print(lists)
+#檢查檔案
+import os
+
+if os.path.isfile('lists.csv'):
+	print('檔案存在')
+	#讀取檔案
+	with open('lists.csv','r') as f:
+		for line in f:  #line 為 excel 內的每一行
+			if '商品,價格'in line:
+				continue
+			name, price = line.strip().split(',')
+			lists.append([name, price])
+	print(lists)
+
+else:
+	print('檔案不存在')
 
 #記帳
 while True:
